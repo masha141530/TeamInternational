@@ -1,4 +1,5 @@
 ﻿using MvcUi.Infrastructure;
+using MvcUi.ViewModels;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -13,15 +14,19 @@ namespace MvcUi.Controllers
     [CustomErrorHandler]//куда его лучше положить?
     public class HomeController : Controller
     {
-        
-        public string Index()
+        public ActionResult Index()
         {
-            string result = "Вы не авторизованы";
+            IndexVM indexVM = new IndexVM();
+            indexVM.isAutorized = false;
+            indexVM.UserName = null;
             if (User.Identity.IsAuthenticated)
             {
-                result = "Ваш логин: " + User.Identity.Name;
+                indexVM.UserName = User.Identity.Name;
+                indexVM.isAutorized = true;
+              //  return RedirectToAction("Movie","List");
             }
-            return result;
+            return View(indexVM);
+            
         }
         [Authorize]
         public ActionResult About()

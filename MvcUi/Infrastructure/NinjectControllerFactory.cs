@@ -9,6 +9,7 @@ using TeamProject.DAL.Repositories.Interfaces;
 
 namespace MvcUi.Infrastructure
 {
+    [CustomErrorHandler]
     internal class NinjectControllerFactory : DefaultControllerFactory
     // TODO а можно этот клас использовать как dependency resolver и вообще зачем ресолвер нужен?
     {

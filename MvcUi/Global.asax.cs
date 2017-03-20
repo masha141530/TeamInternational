@@ -10,6 +10,7 @@ using TeamProject.DAL;
 
 namespace MvcUi
 {
+    [CustomErrorHandler]
     //нужно ли самому настраиваить injects для NinjectHttpModule,OnePerRequestHttpModule,Bootstrapper 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -40,6 +41,7 @@ namespace MvcUi
         protected void Application_Error()
         {
             logger.Info("Application Error");
+            
         }
         protected void Application_End()
         {

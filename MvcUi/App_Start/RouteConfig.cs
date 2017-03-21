@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvcUi.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,10 +14,20 @@ namespace MvcUi
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            routes.MapRoute(name: "",
+                url: "{controller}/{action}/{id}/{*catchall}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                constraints: new
+                {
+                    customConstraint = new UserAgentConstraint("Chrome")
+                }
+            );
+            routes.MapRoute("ChromeRoute", "{*catchall}",
+            new { controller = "Home", action = "Index" },
+            new
+            {
+                customConstraint = new UserAgentConstraint("Chrome")
+            }
             );
         }
     }

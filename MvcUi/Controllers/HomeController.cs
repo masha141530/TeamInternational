@@ -1,13 +1,7 @@
 ﻿using MvcUi.Infrastructure;
 using MvcUi.ViewModels;
-using Ninject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+
 using System.Web.Mvc;
-using TeamProject.DAL.Entities;
-using TeamProject.DAL.Repositories.Interfaces;
 
 namespace MvcUi.Controllers
 {
@@ -16,9 +10,7 @@ namespace MvcUi.Controllers
     {
         public ActionResult Index()
         {
-            IndexVM indexVM = new IndexVM();
-            indexVM.isAutorized = false;
-            indexVM.UserName = null;
+            IndexModel indexVM = new IndexModel { isAutorized=false,UserName=null};
             if (User.Identity.IsAuthenticated)
             {
                 indexVM.UserName = User.Identity.Name;

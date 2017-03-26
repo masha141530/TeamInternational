@@ -1,22 +1,20 @@
-﻿@model MvcUi.ViewModels.IndexVM
+﻿@model MvcUi.ViewModels.IndexModel
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="row">
-   <div class="col-md-12">
-     <h1>  Greating on Page 1</h1>
-
-   </div>   
+    <div class="col-md-12">
+        <h1>  Greating on Page 1</h1>
+    </div>
 </div>
+@if(@TempData["messageEmail"]!=null){
+    <div class="col-md-12">
+        @TempData["messageEmail"]
+    </div>
+}
 @if (!Model.isAutorized)
 {
     <div class="login">
-        @{Html.RenderAction("Login", "Account");};
-    </div>
-            }
-            else {
-                @Html.ActionLink("Выйти","LogOut","Account")
-            }
-
+        @{Html.RenderAction("Login", "Account");}
+    </div>}

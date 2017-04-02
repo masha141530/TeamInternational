@@ -10,7 +10,7 @@ namespace MvcUi.Controllers
     {
         public ActionResult Index()
         {
-            IndexModel indexVM = new IndexModel { isAutorized=false,UserName=null};
+            Page1Model indexVM = new Page1Model { isAutorized=false,UserName=null};
             if (User.Identity.IsAuthenticated)
             {
                 indexVM.UserName = User.Identity.Name;
@@ -20,11 +20,26 @@ namespace MvcUi.Controllers
             return View(indexVM);
             
         }
+        public ActionResult Page1() {
+            Page1Model model = new Page1Model { isAutorized = false, UserName = null };
+            if (User.Identity.IsAuthenticated)
+            {
+                model.UserName = User.Identity.Name;
+                model.isAutorized = true;
+                //  return RedirectToAction("Movie","List");
+            }
+            return View(model);
+        }
+
         [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
             return View();
+        }
+        [Authorize]
+        public ActionResult Page2() {
+            return RedirectToAction("Movie","List");
         }
 
     }

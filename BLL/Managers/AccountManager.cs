@@ -38,9 +38,29 @@ namespace BLL.Managers
 
         public User GetUser(string input, string password)
         {
-            User s = (work.Users as UserRepository).GetByEmailAndPassword(input, password);
-            return s;
-            //return work.Users.Items.First(e => ((e.Name == input || e.Email == input) && e.Password == password));//can throw an Exeprion if in db will ne 2 same users it is incorrect 
+            UserRepository s = (work.Users as UserRepository);
+            // return
+            //s.GetByEmailAndPassword(input, password);
+            //Items dont work because cant cast Dbset to Quaryable
+
+            IEnumerable<User> findedUsers;
+
+            var gs= work.Users.Items.Select(e=>(e.Name == input || e.Email == input) && e.Password == password);
+
+            var ggg = gs.Count(e=>e==true);
+
+            if (ggg>1)
+
+            {
+                throw new NotSupportedException();
+            }
+
+            //does not recorgonize sql to 
+            //if (findedUsers.Count()>1)
+            //{
+            //    throw new NotSupportedException();
+            //}
+            return work.Users.Items.FirstOrDefault(e => ((e.Name == input || e.Email == input) && e.Password == password));//can throw an Exeprion if in db will ne 2 same users it is incorrect 
         }
         public User GetUser(string input)
         {

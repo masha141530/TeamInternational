@@ -1,20 +1,10 @@
-﻿@model MvcUi.ViewModels.IndexModel
+﻿
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="row">
     <div class="col-md-12">
-        <h1>  Greating on Page 1</h1>
+        <h1>  It will be redirected!</h1>
     </div>
 </div>
-@if(@TempData["messageEmail"]!=null){
-    <div class="col-md-12">
-        @TempData["messageEmail"]
-    </div>
-}
-@if (!Model.isAutorized)
-{
-    <div class="login">
-        @{Html.RenderAction("Login", "Account");}
-    </div>}

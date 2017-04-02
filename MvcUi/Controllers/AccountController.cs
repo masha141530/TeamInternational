@@ -95,7 +95,7 @@ namespace MvcUi.Controllers
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Page1", "Home");
         }
         public ActionResult UserName() {
             if (User.Identity.IsAuthenticated)

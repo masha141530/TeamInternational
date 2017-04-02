@@ -1,10 +1,10 @@
 ﻿namespace MvcUi.ViewModels
 {
-    public class IndexModel
+    public class Page1Model
     {
         public bool isAutorized { get; internal set; }
         public string UserName { get; internal set; }
-        public IndexModel() {
+        public Page1Model() {
             isAutorized = false;
             UserName = null;
         }

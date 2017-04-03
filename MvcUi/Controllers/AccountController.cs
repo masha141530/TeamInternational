@@ -1,6 +1,6 @@
 ﻿using BLL.Abstract;
+using BLL.ViewModels.Account;
 using MvcUi.Infrastructure;
-using MvcUi.ViewModels;
 using Ninject;
 using System.Web.Mvc;
 using System.Web.Security;

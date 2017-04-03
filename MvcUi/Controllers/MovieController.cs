@@ -1,6 +1,5 @@
-﻿
-using Bll.ViewModels;
-using BLL.Abstract;
+﻿using BLL.Abstract;
+using BLL.ViewModels.Movie;
 using Ninject;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -13,16 +12,22 @@ namespace MvcUi.Controllers
         [Inject]
         IMovieManager manager;
         [Inject]
-        IMovieBuilderVM buider;
+        IMovieVMBuilder builder;
+        public MovieController(IMovieManager manager, IMovieVMBuilder builder)
+        {
+            this.manager = manager;
+            this.builder = builder;
+        }
         // GET: Movie
         public ActionResult Index()
         {
-            return View();
+            return View("Page2");
         }
+        [Authorize]
         public ActionResult List5()
         {
             IEnumerable<Movie> resultList = manager.GetMovies(5);
-            IEnumerable<MovieModel> resultListModels = buider.GetVMList(resultList);
+            IEnumerable<MovieModel> resultListModels = builder.GetVMList(resultList);
             return View(resultListModels);
         }
         // GET: Movie/Details/5

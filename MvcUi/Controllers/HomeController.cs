@@ -1,6 +1,5 @@
-﻿using MvcUi.Infrastructure;
-using MvcUi.ViewModels;
-
+﻿using BLL.ViewModels.Account;
+using MvcUi.Infrastructure;
 using System.Web.Mvc;
 
 namespace MvcUi.Controllers

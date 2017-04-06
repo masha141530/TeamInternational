@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-//some comments for commiting
+//some comments
 namespace BLL.ViewModels.Account
 {
     public class LoginModel

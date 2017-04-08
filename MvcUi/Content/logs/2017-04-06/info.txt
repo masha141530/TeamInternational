@@ -25,3 +25,7 @@
 2017-04-06 18:30:11.9716|INFO|MvcUi.MvcApplication|Application Init
 2017-04-06 18:30:53.8691|INFO|MvcUi.MvcApplication|Application Dispose
 2017-04-06 18:37:40.5140|INFO|MvcUi.MvcApplication|Application Error
+2017-04-06 22:21:07.4740|INFO|MvcUi.App_Start.PreStartAppDBCreate|Application PreStart
+2017-04-06 22:21:20.1247|INFO|MvcUi.MvcApplication|Application Start
+2017-04-06 22:21:25.4360|INFO|MvcUi.MvcApplication|Application Init
+2017-04-06 22:21:25.5901|INFO|MvcUi.MvcApplication|Application Init

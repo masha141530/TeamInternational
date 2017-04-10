@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TeamProject.DAL.Entities;
 using TeamProject.DAL.Repositories;
 using TeamProject.DAL;
+using MvcUi.Helpers;
 
 namespace MvcUi.Controllers
 {
@@ -61,10 +62,12 @@ namespace MvcUi.Controllers
 
         // POST: Movie/Create
         [HttpPost]
-        public ActionResult Create(Movie movie)
+        //public ActionResult Create(MovieModel model)
+        public ActionResult Create(MovieModel movieModel)
         {
             try
             {
+                Movie movie = MovieHelper.GetByModel(movieModel);
                 // TODO: Add insert logic here
                 db.Movies.Add(movie);
                 db.SaveChanges();

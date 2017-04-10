@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using TeamProject.DAL.Entities;
 
 namespace BLL.ViewModels.Movie

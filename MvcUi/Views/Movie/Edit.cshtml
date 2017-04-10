@@ -1,6 +1,7 @@
-﻿@model DAL.Entities.Movie
+﻿@using TeamProject.DAL.Entities;
+@model Movie
 @{
-    ViewBag.Title = "Page2";
+    ViewBag.Title = "Page 3";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,7 +12,7 @@
     <p>Movie name: </p>
     @Html.TextBox("Name", Model.Name)
     <p>Age limit:</p>
-    @Html.TextBox("AgeLiit", Model.AgeLimit)
+    @Html.TextBox("AgeLimit", Model.AgeLimit)
     <p>Release year:</p>
     @Html.TextBox("ReleaseYear", Model.ReleaseYear)
     <p><input type="submit" value="Save" /></p>

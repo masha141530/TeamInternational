@@ -8,6 +8,8 @@ namespace BLL.ViewModels.Movie
 
         public string Name { get; set; }
 
+        public int ReleaseYear { get; set; }
+
         public ICollection<View> Views { get; set; }
     }
 }

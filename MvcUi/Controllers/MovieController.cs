@@ -4,6 +4,8 @@ using Ninject;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using TeamProject.DAL.Entities;
+using TeamProject.DAL.Repositories;
+using TeamProject.DAL;
 
 namespace MvcUi.Controllers
 {
@@ -13,6 +15,9 @@ namespace MvcUi.Controllers
         IMovieManager manager;
         [Inject]
         IMovieVMBuilder builder;
+
+        CinemaContext db = new CinemaContext();
+
         public MovieController(IMovieManager manager, IMovieVMBuilder builder)
         {
             this.manager = manager;
@@ -21,7 +26,9 @@ namespace MvcUi.Controllers
         // GET: Movie
         public ActionResult Index()
         {
+            //return View();
             return View(List5());
+            //returns the 3rd page Movie, main page for Movie redacting
         }
         //post
         [HttpPost]
@@ -31,11 +38,13 @@ namespace MvcUi.Controllers
             return View(resModel);
         }
         
-        private IEnumerable<MovieModel>  List5()
+        private IEnumerable<MovieModel> List5()
+        // private ActionResult List5()
         {
             IEnumerable<Movie> resultList = manager.GetMovies(5);
             IEnumerable<MovieModel> resultListModels = builder.GetVMList(resultList);
             return resultListModels;
+            //return View(resultListModels);
         }
         // GET: Movie/Details/5
         public ActionResult Details(int id)
@@ -44,6 +53,7 @@ namespace MvcUi.Controllers
         }
 
         // GET: Movie/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -51,13 +61,15 @@ namespace MvcUi.Controllers
 
         // POST: Movie/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Movie movie)
         {
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                db.Movies.Add(movie);
+                db.SaveChanges();
+                TempData["ID"] = movie.ID;
+                return RedirectToAction("Edit");
             }
             catch
             {
@@ -66,9 +78,11 @@ namespace MvcUi.Controllers
         }
 
         // GET: Movie/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+            Movie movie = db.Movies.Find(id);
+            return View(movie);
         }
 
         // POST: Movie/Edit/5

@@ -36,6 +36,7 @@ namespace BLL.Managers
 
         public IEnumerable<Movie> GetMovies(int count)
         {
+
             return work.Movies.Items.Take(count);
         }
     }

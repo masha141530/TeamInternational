@@ -10,10 +10,16 @@
 @using (Html.BeginForm("Edit", "Movie", FormMethod.Get))
 {
     <p>Movie name: </p>
-    @Html.TextBox("Name", Model.Name)
+    @*@Html.TextBox("Name", Model.Name)
     <p>Age limit:</p>
     @Html.TextBox("AgeLimit", Model.AgeLimit)
     <p>Release year:</p>
-    @Html.TextBox("ReleaseYear", Model.ReleaseYear)
+    @Html.TextBox("ReleaseYear", Model.ReleaseYear)*@
+    @Html.LabelFor(m => m.Name, "Movie name")
+    @Html.EditorFor(model => model.Name)
+    @Html.LabelFor(m => m.Name, "Age limit")
+    @Html.EditorFor(model => model.AgeLimit)
+    @Html.LabelFor(m => m.Name, "Release year")
+    @Html.EditorFor(model => model.ReleaseYear)
     <p><input type="submit" value="Save" /></p>
 }

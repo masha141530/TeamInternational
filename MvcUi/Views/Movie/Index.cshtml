@@ -21,7 +21,7 @@
 }
 
 @* в какой вьюхе это должно лежать? *@
-@using (Html.BeginForm("Create", "Movie", FormMethod.Get))
+@using (Html.BeginForm("Create", "Movie", FormMethod.Post))
 {
     <p>Input name of movie: </p>
     @Html.TextBox("Name", "Input name")
